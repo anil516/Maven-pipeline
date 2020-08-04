@@ -8,10 +8,10 @@ node{
         cron('H */8 * * *') //regular builds
         pollSCM('* * * * *') //polling for changes, here once a minute
     } 
-   stage('Gradle Build') {
-     def gradleHome = tool name: 'gradle', type: 'gradle'
-     def gradleCMD = "${gradleHome}/bin/gradle"
-     sh "${gradleCMD} clean build"
+   stage('Maven Build') {
+     def mavenHome = tool name: 'maven', type: 'maven'
+     def mavenCMD = "${mavenHome}/bin/maven"
+     sh "${mavenCMD} clean compile test"
     }
 
 }
